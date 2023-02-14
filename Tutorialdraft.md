@@ -113,3 +113,85 @@ module.exports = {
 The code above will configure tailwind to implement all changes that occur inside any file in the `src` folder with a .js, .jsx, .ts or .tsx extension.
 
 Then finally, you need to add  `@tailwind` directives inside your index.css file with the codes below:
+
+```css
+
+/** index.css*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+With these steps, you have successfully installed and  set up tailwindcss for your application. 
+Now you need to install and set bootstrap up for your application as well. 
+Run the command below to install bootstrap:
+
+```bash
+
+npm install bootstrap
+#OR
+yarn add bootstrap
+```
+
+The command above will install the most recent version of Bootstrap from npm into your project. 
+Once you have a successful and complete installation, you should get a response similar to the one below on your terminal screen:
+
+```bash
+
+added 2 packages, and audited 1476 packages in 4s
+
+234 packages are looking for funding
+  run `npm fund` for details
+
+6 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+```
+
+You can now import Bootstrap into your index.js file which is the entry file of your project. 
+Add the code below to the index.js file of your project:
+
+```JavaScript
+
+/** index.js */
+
+import "bootstrap/dist/css/bootstrap.min.css";
+```
+
+The code above will import the Bootstrap CSS package into your application and you can make use of Bootstrap anywhere in your application.
+With this, you have completed step 1 and installed all the packages required for this project. 
+
+To make sure everything that was installed correctly, you can open the package.json file of your project. Under the `dependencies` section, you will `see react-icons`, `react-hook-forms` and `bootstrap`
+
+```javaScript
+
+/** package.json*/
+
+"dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.0",
+    "react-icons": "^4.7.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  ```
+
+If you check under the devDependencies section you will see tailwindcss:
+
+```javaScript
+
+/**package.json*/
+
+ "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+  ```

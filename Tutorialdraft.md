@@ -182,12 +182,16 @@ To make sure everything that was installed correctly, you can open the package.j
    ```
    "bootstrap": "^5.2.3",
    ```
+   
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    ```
+   
+   
+   ```
     "react-hook-form": "^7.43.0",
     "react-icons": "^4.7.1",
     ```
+    
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

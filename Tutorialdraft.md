@@ -298,3 +298,39 @@ const LoginForm = () => {
 }
 export default LoginForm
 ````
+
+From line 6 to line 39 of the code above, you created a form with a single input field. On line 19 you added a header for your form and then you used tailwindcss to style it, the code from line 16 to line 20 will create an input  field with a placeholder and a type of password and also styled using tailwindcss.  
+Then on line 32 you added an error message that will notify the user when they provide weak credentials that goes against your password creation rules. 
+For now this error message is still hardcoded.
+
+Now, you need to make the user’s experience better, by adding a feature that will either show the users their password while they type or hide their passwords, depending on their choices. 
+To do this, you need to import two icons from from from the react-icons package you installed earlier. 
+
+The first icon will appear if the user wants to hide their password while the second icon will appear if they want to show their password. So import these icons from the react-icons by adding the code below inside the LoginForm component:
+
+````javaScript
+
+```
+import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
+```
+
+const LoginForm = () => {
+  return (
+   <React.Fragment>
+      .......
+     <p className='text-white'>Error</p>
+     
+     
+     ```
+          {/** Password view or hide */}
+    <div className='text-2xl absolute top-2 right-5'>
+       <AiFillEyeInvisible/>
+       <AiFillEye/>
+    </div>
+    ```
+    ........
+   </form>
+ </React.Fragment>
+  )
+}
+export default LoginForm

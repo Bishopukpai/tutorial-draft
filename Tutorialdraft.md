@@ -226,10 +226,10 @@ You now have to import the `LoginForm` component inside your `App.js` file.  Use
 
 /**App.js*/
 
-<mark>import LoginForm from "./Components/LoginForm";</mark>
+import LoginForm from "./Components/LoginForm";
 function App() {
   return (
-     `<LoginForm/>`{: .ruby}
+     <LoginForm/>
     
   );
 }

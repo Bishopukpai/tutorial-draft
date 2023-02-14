@@ -93,3 +93,19 @@ Created Tailwind CSS config file: tailwind.config.js
 ```
 
 It will also create a `tailwind.config.js` file for you. If you check the root of your project you will see the tailwind.config.js file. 
+
+The next step you can take is to add the paths of all your template files in the tailwind.config.js file you just created with the command, by adding the code below inside the tailwind.config.js file:
+
+```javaScript
+
+/** tailwind.config.js*/
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```

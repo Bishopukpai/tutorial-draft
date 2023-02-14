@@ -23,3 +23,17 @@ To follow this tutorial, you will need the following:
 1. Basic knowledge of React.Js, like creating a new React project, modifying the React project, and creating components. There is a tutorial on [How To SetUp React Project With Create React App](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-react-project-with-create-react-app#prerequisites) that will be very helpful in getting this knowledge.
 
 ## Step 1 - Installing Necessary Packages and Dependencies
+
+In this step you are going to install all the packages and dependencies you need for building and styling your application. 
+You will need to install and use Bootstrap for styling the password indicator progress bar. You also need to install react-hook-form. This particular package will help implement the password complexity check rules that will prevent account creation if the password of the user is weak. Then you also need tailwindcss for styling the application and then finally, you will have to install react-icons. The react-icons package will basically add icons to your form and make it look nicer and formal.
+
+You can start by installing react-icons and react-hook-form first with the command below:
+
+```bash
+
+npm install react-icons react-hook-form
+
+#OR
+
+yarn add react-icons react-hook-form
+```

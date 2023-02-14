@@ -461,3 +461,73 @@ npm start
  
  
  https://user-images.githubusercontent.com/77885988/218808316-3215016f-f318-42f8-abe4-a6335d553bcb.mov
+ 
+ With this, we are done creating the sign-up form. Now we can move on to  step 2 which is creating the progress bar.
+ 
+ 
+## Step 3- Set the Password Complexity Progress Bar
+
+In this section, you are going to create a progress bar under the password field, that will indicate the strength of the user’s password to them. 
+The progress bar should be able to change colors and length when the password becomes more complex. 
+For instance, if the user inputs only numbers, the progress bar should take a particular color and length, if they make it more complex by adding lower case letters, then the length of the progress bar should increase and the color should change also. 
+
+To add a progress bar to your project, create a file inside your `Components` folder and call it `ProgressBar.js`. Inside the `ProgressBar.js` file,  you have to create a progress bar with the code below:
+
+````javascript
+
+/**./Components/ProgressBar.js*/
+
+import React from 'react'
+const ProgressBar = () => {
+  return (
+    <>
+        <div className='progress'>
+            <div className='progress-bar' 
+            style={{
+                width:"70%",
+                background:'red'
+            }}></div>
+        </div>
+    </>
+  )
+}
+export default ProgressBar
+````
+
+With the code above, you created a `ProgressBar` component.  Inside that component you returned a progress bar class from bootstrap. 
+Then you gave it an inline style and you hardcoded the width of the progress bar and also set the background color to red.
+
+Now import the ProgressBar component inside the LoginForm.js file and then render it in your LoginForm component with the code below:
+
+````javascript
+
+/**Components/LoginForm.js*/
+
+.......
+
+```
+import ProgressBar from './ProgressBar'
+```
+
+const LoginForm = () => {
+.......
+
+<div className='relative'>
+  <input 
+    type={(showPassword === false)? 'password' : 'text'}
+     placeholder='enter a strong passwod...'
+     className='w-full rounded-lg h-10'
+    />
+    
+    ```
+    <ProgressBar />
+    ```
+    
+    <p className='text-white'>Error</p>
+...........
+````
+
+Save the LoginForm.js and ProgressBar.js files and open the browser, you should see a progress bar under the password field, something like the image below:
+
+![Screenshot 2023-02-07 at 18 10 35](https://user-images.githubusercontent.com/77885988/218888354-b5044f46-02c0-4f78-acba-7e94a872131e.jpeg)
+

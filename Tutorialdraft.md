@@ -334,3 +334,7 @@ const LoginForm = () => {
   )
 }
 export default LoginForm
+````
+
+With the code above, you imported AiFilledEyeInvisible and AiFillEye icons from react-icons/ai on line 3.
+Then add the icons to your form field with the code from line 11 to line 14. 

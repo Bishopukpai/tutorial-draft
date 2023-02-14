@@ -195,3 +195,46 @@ If you check under the devDependencies section you will see tailwindcss:
     "tailwindcss": "^3.2.4"
   }
   ```
+
+## Step 2 - Creating a User Registration Form 
+
+In this step, you will create a signup form that will have two input fields. The first field will collect user’s password then the second field will ask the user to re-enter the password they created, to confirm what they entered in the first field.
+
+So, create a folder in the `src` folder of your project and call it `Components`. Inside the `Components` folder, you are going to create a file and call it `LoginForm.js`. The `LoginForm.js` file will contain the Registration form.
+
+You can start by creating a `LoginForm` component inside the `LoginForm.js` file with the code below:
+
+```javascript
+
+/**LoginForm.js */
+
+import React from 'react'
+
+const LoginForm = () => {
+  return (
+    <div>
+        
+    </div>
+  )
+}
+export default LoginForm
+```
+
+You now have to import the `LoginForm` component inside your `App.js` file.  Use the code below to import and return the `LoginForm` component inside the `App.js` file:
+
+```javascript
+
+/**App.js*/
+
+==import LoginForm from "./Components/LoginForm";==
+function App() {
+  return (
+     ==<LoginForm/>==
+    
+  );
+}
+export default App;
+```
+
+Then, you will create a form with an input field to collect users' passwords inside the LoginForm.js file, with the code below:
+

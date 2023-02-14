@@ -460,10 +460,19 @@ npm start
  Open your app in any browser of your choice and you should see a login form that looks like the one below.
  
  
+
+
+
  ![passwordvisible](https://user-images.githubusercontent.com/77885988/218806152-fbc523b1-afd9-4d13-b3fb-816a5cb6e455.png)
 
  
  ![Screenshot 2023-02-07 at 18 10 35](https://user-images.githubusercontent.com/77885988/218806439-8f45092d-a0c1-4cd8-8ee3-5fd8bf6cff19.jpeg)
+ 
+ 
+
+https://user-images.githubusercontent.com/77885988/218807143-636a445e-7b58-498e-ac66-c1b9abc5c193.mov
+
+
 
 
  

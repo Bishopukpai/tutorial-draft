@@ -100,11 +100,12 @@ The next step you can take is to add the paths of all your template files in the
 
 /** tailwind.config.js*/
 module.exports = {
-```
+
+````
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-```
+````
   theme: {
     extend: {},
   },

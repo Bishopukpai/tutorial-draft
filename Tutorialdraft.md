@@ -37,3 +37,21 @@ npm install react-icons react-hook-form
 
 yarn add react-icons react-hook-form
 ```
+
+The command above will install react-icons and react-hook-form packages in your application.
+Once the installation is successfully completed, you should see something like this in your terminal screen:
+
+```bash
+
+added 2 packages, and audited 1474 packages in 6s
+
+232 packages are looking for funding
+  run `npm fund` for details
+
+6 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+```

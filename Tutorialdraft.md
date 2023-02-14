@@ -109,3 +109,7 @@ module.exports = {
   plugins: [],
 }
 ```
+
+The code above will configure tailwind to implement all changes that occur inside any file in the `src` folder with a .js, .jsx, .ts or .tsx extension.
+
+Then finally, you need to add  `@tailwind` directives inside your index.css file with the codes below:

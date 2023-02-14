@@ -170,7 +170,7 @@ With this, you have completed step 1 and installed all the packages required for
 
 To make sure everything that was installed correctly, you can open the package.json file of your project. Under the `dependencies` section, you will `see react-icons`, `react-hook-forms` and `bootstrap`
 
-```javaScript
+````javaScript
 
 /** package.json*/
 
@@ -178,15 +178,20 @@ To make sure everything that was installed correctly, you can open the package.j
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.2.3",
+   
+   ```
+   "bootstrap": "^5.2.3",
+   ```
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    ```
     "react-hook-form": "^7.43.0",
     "react-icons": "^4.7.1",
+    ```
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
-  ```
+  ````
 
 If you check under the devDependencies section you will see tailwindcss:
 
@@ -225,19 +230,22 @@ export default LoginForm
 
 You now have to import the `LoginForm` component inside your `App.js` file.  Use the code below to import and return the `LoginForm` component inside the `App.js` file:
 
-```javascript
+````javascript
 
 /**App.js*/
-
+```
 import LoginForm from "./Components/LoginForm";
+```
 function App() {
   return (
+  ```
      <LoginForm/>
+   ```
     
   );
 }
 export default App;
-```
+````
 
 Then, you will create a form with an input field to collect users' passwords inside the LoginForm.js file, with the code below:
 

@@ -450,3 +450,15 @@ It’s actually the same code as the `password` collection field, it's just that
 Then from line 23 to line 29 you created the `submit` button.  
 Save the `LoginForm.js` file and run your application with:
 
+```bash
+
+#command Line 
+
+npm start 
+```
+
+ Open your app in any browser of your choice and you should see a login form that looks like the one below.
+ 
+ 
+ 
+ 

@@ -18,4 +18,4 @@ At the end of this tutorial, you will understand the requirements for building a
 
 To follow this tutorial, you will need the following:
 
-1. Install a stable version of
+1. Install a stable version of [Node.js](https://nodejs.org/en/) on your computer.  If you don’t have Node.Js on your machine, you can follow the instructions in this tutorial, [How To Install Node.js and Create Local Development environment on macOs](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-and-create-a-local-development-environment-on-macos)

@@ -229,7 +229,7 @@ You now have to import the `LoginForm` component inside your `App.js` file.  Use
 <mark>import LoginForm from "./Components/LoginForm";</mark>
 function App() {
   return (
-     ==<LoginForm/>==
+     `<LoginForm/>`{: .ruby}
     
   );
 }

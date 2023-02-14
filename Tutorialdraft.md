@@ -253,3 +253,48 @@ export default App;
 
 Then, you will create a form with an input field to collect users' passwords inside the LoginForm.js file, with the code below:
 
+````javascript
+
+/**LoginForm.js*/
+
+......
+const LoginForm = () => {
+  return (
+   <React.Fragment>
+     <section>
+       <form>
+         <div 
+          className='bg-black w-auto h-96 mt-20 rounded-lg mx-5'
+          >
+          {/** Header */}
+            <div 
+              className='flex items-center justify-center h-32'
+            >
+            <p 
+  className='text-white uppercase text-4xl font-bold text-center'
+             >
+              Sign-Up To Create an Account
+            </p>
+            </div>
+            {/** Body */}
+            <div>
+              <div className='mx-5 '>
+                  {/** Password creation field */}
+                    <div className='relative'>
+                       <input 
+                        type="password"
+                        placeholder='enter a strong passwod...'
+                        className='w-full rounded-lg h-10'
+                        />
+                      <p className='text-white'>Error</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+        </section>
+   </React.Fragment>
+  )
+}
+export default LoginForm
+````

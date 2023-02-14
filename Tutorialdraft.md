@@ -336,5 +336,60 @@ const LoginForm = () => {
 export default LoginForm
 ````
 
-With the code above, you imported AiFilledEyeInvisible and AiFillEye icons from react-icons/ai on line 3.
+With the code above, you imported `AiFilledEyeInvisible` and `AiFillEye` icons from `react-icons/ai` on line 3.
 Then add the icons to your form field with the code from line 11 to line 14. 
+
+The next feature you need to add to the form field is to make the password visible or hidden, to do this you have to create a state with `useState`, then use this `state` to create a condition to either display or hide the password. 
+Add the following code to your `LoginForm` component to add this feature to your the input field:
+
+````javascript
+
+/**LoginForm.js*/
+
+```
+import React, {useState} from 'react'
+```
+
+import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
+
+
+const LoginForm = () => {
+
+```
+{/** Show or hide Password state */}
+const [showPassword, setShowPassword] = useState(false)
+{/** Show Password onClick events */}
+const handleShowPassword = () => {
+    setShowPassword(!showPassword)
+}
+```
+.......
+   <div className='relative'>
+     <input 
+     
+     ```
+       type={(showPassword === false)? 'password' : 'text'}
+      ```
+      
+        placeholder='enter a strong passwod...'
+        className='w-full rounded-lg h-10'
+       />
+      <p className='text-white'>Error</p>
+        {/** Password view or hide */}
+      <div className='text-2xl absolute top-2 right-5'>
+      
+      ```
+        {
+          (showPassword == false)? 
+           <AiFillEyeInvisible onClick={handleShowPassword}/>:  
+           <AiFillEye onClick={handleShowPassword}/>
+         }
+      ```
+      
+      </div>
+    </div>
+    ..........
+  )
+}
+export default LoginForm
+````

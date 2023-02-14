@@ -55,3 +55,41 @@ To address all issues (including breaking changes), run:
 
 Run `npm audit` for details.
 ```
+
+You can now install the tailwindcss package. To install tailwinds to react.js, you will need to follow these steps:
+First, you have to install the package from npm with the command below:
+
+```bash
+npm install -D tailwindcss
+```
+
+The command above will install tailwindcss as a devDependency.  Once the installation process is done you should see something like this on your terminal screen:
+
+```bash
+
+up to date, audited 1474 packages in 3s
+
+232 packages are looking for funding
+  run `npm fund` for details
+
+6 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+```
+
+You can now go ahead and generate a tailwind.config.js file with the command below:
+
+```bash
+npx tailwindcss init
+```
+
+The code above will give the following response on the terminal screen:
+
+```bash
+Created Tailwind CSS config file: tailwind.config.js
+```
+
+It will also create a `tailwind.config.js` file for you. If you check the root of your project you will see the tailwind.config.js file. 

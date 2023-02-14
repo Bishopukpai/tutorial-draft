@@ -393,3 +393,60 @@ const handleShowPassword = () => {
 }
 export default LoginForm
 ````
+
+With the code above, you imported the `useState` hook from `react` and then used it to create a `showPassword` state with an initial value of `false` on line 8. and also created a `setShowPassword` function that will reset the value of the `showPassword` state. 
+
+Then from line 10 to line 12, you create a `handleShowPassword` function that will set the `showPassword` state to the previous value. 
+That is, if the state was set to `true` before this function will set it to `false` and if it was `false` then it will set it to `true`.
+
+Now on line  16, you used the value of the `showPassword` state to set the type of the input field. So, if the value of the `showPassword` state is `false`, then the input field type will be `password`, which means users won’t see what they are typing, but if the value is true, then the input type will be `text`.
+
+Then finally, from line 23 to line 27, you use a `ternary` operator to display either the `AiFilledEyeInvisible` icon or the `AiFilledEye` icon depending on the value of the `showPassword` state. 
+If the `showPassword` state is `true` your code will show the `AiFilledEye` icon, but if it is `false` your code will show the `AiFilledEyeInvisible` icon. To toggle the value of the `showPassword` state, you passed the `handleShowPassword` function to an `onClick` event in the `AiFilledEye` and `AiFilledEyeInvisible` icons
+
+To wrap things up for this section, let’s create another input field. This input field will be used to confirm the password. 
+You can add the following code to your `LoginForm` component in the `LoginForm.js` file:
+
+````javascript
+
+/**LoginForm.js*/
+
+........
+  {/** Password view or hide */}
+    <div className='text-2xl absolute top-2 right-5'>
+      {
+      (showPassword == false)? 
+        <AiFillEyeInvisible onClick={handleShowPassword}/>: 
+        <AiFillEye onClick={handleShowPassword}/>
+      }
+     </div>
+    </div>
+    
+    
+```
+    {/** Confirm Password creation field */}
+    <div className='relative'>
+      <input 
+        type='password'
+         placeholder='confirm your password'
+         className='w-full rounded-lg h-10'
+       />
+       <p className='text-white'>Error</p>
+    </div>
+  {/** Submit Button */}
+  <div className='flex items-center justify-center'>
+    <input
+      type="submit"
+      value="submit"
+      className='h-10 w-2/5 text-white rounded-lg font-bold bg-red-900'
+    />
+  </div>
+```
+..........
+````
+
+With the code above, you created a field for password confirmation. 
+It’s actually the same code as the `password` collection field, it's just that in this case you are hard coding the input type as `password`. 
+Then from line 23 to line 29 you created the `submit` button.  
+Save the `LoginForm.js` file and run your application with:
+

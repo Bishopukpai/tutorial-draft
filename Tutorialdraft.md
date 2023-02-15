@@ -693,3 +693,53 @@ Now if you save the `LoginForm.js` and `ProgressBar.js` files and open the brows
 
 ![Screenshot 2023-02-07 at 18 34 25](https://user-images.githubusercontent.com/77885988/218891961-47d2a386-1a3e-4fe6-b42f-45787caf2638.jpeg)
 
+Try to enter any value into the password field, you should see something like the one below:
+
+
+https://user-images.githubusercontent.com/77885988/218892433-234cdf3c-902d-4c83-b311-e7305b02545e.mov
+
+Your progress bar is working fine. 
+One more thing you need to add is a label for the progress. The label will tell the user if the password is weak, very weak, good,  or complex. So add the code below to your `ProgressBar.js` file: 
+
+````javascript
+
+/**Components/ProgressBar.js*/
+
+.......
+
+```
+ const passwordStrengthLabel = () =>{
+        switch(num){
+            case 0:
+                return "Very weak"
+            case 25:
+                return "weak"
+            case 50:
+                return 'Good'
+            case 75: 
+                return 'Complex'
+            case 100: 
+                return "Very complex"
+        }
+    }
+  ```
+  
+  
+  return (
+    <>
+     <div className='progress' style={{height: '7px'}}>
+       <div className='progress-bar' 
+            style={setProgressBar()}></div>
+       </div>
+       
+  ```
+    <p 
+      style={{color:  ProgressBarColor() }}>
+      {passwordStrengthLabel()}
+    </p>
+   ```
+   
+    </>
+  )
+}
+````

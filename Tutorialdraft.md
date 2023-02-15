@@ -894,3 +894,95 @@ Now save the file and open the browser. When you try to submit the form without 
 If you go ahead and provide an 8 character password and your password contains just lowercase letters or misses one of the requirements. Then you should get the “A strong password should contain at least one lowercase letter, one uppercase letter, a number, and any special character” error message.
 
 https://user-images.githubusercontent.com/77885988/218894626-7e6a730b-d7f3-42f0-a7e3-b579c366ad46.mov
+
+However, if you provide a password that meets all these criteria, your progress bar will  indicate so and  your form will be submitted. 
+You should see an alert, that says “Welcome”
+Now you have an input field that checks password complexity and grants access to only complex passwords.
+
+Another feature to add to your form is the `Confirm Password` field. Right now, the `confirm password` field does not check the user’s input if it matches the `password` field. 
+Add the following code to the `confirm password` field inside the `LoginForm` component:
+
+````javascript
+
+/**Components/LoginForm.js*/
+
+
+  return ( 
+..............
+{/** Confirm Password creation field */}
+<div className='relative'>
+   <input 
+    type='password'
+    placeholder='confirm your password'
+    className='w-full rounded-lg h-10'
+    
+    ```
+    {...register("ConfirmPassword", { required: 'Your input does not match',
+   
+    validate: (value) => 
+    value === password || "Your inputs does not match",
+    })}
+    ```
+  />
+  
+  ```
+  <p className='text-red-500'>
+    {
+     errors.ConfirmPassword && 
+      <span>
+          {errors.ConfirmPassword.message}
+      </span>
+     }
+  </p>
+  ```
+</div>
+````
+
+The code from line 12 to line 16 will check if the `confirmed password` field has the same value with the `password` state. If it does not have the same value as the `password` state, it will throw an error message “Your inputs does not match”. Then the code from line 18 to line 24 will show the error message to the users if their inputs do not match:
+
+https://user-images.githubusercontent.com/77885988/218895519-d3ef8e25-5555-449e-906c-d72678091967.mov
+
+Now as a final touch, you have to make copying and pasting impossible in the `confirm password` field. 
+Add the code below to the input tag in the `confirm password` field:
+
+````javascript
+
+/**LoginForm.js*/
+
+......... 
+<div className='relative'>
+   <input 
+    type='password'
+     placeholder='confirm your password'
+     
+     ```
+     onPaste={(e)=>{
+     e.preventDefault()
+     return false
+     }}
+     ```
+     
+     className='w-full rounded-lg h-10'
+
+     {...register("ConfirmPassword", { required: 'Your input does not match',
+     validate: (value) => 
+     value === Checkpassword || "Your inputs does not match",
+    })}
+   />
+......
+````
+
+Save the `LoginForm.js` file and open the browser, you should notice that copying and pasting does not work in this field. 
+
+https://user-images.githubusercontent.com/77885988/218895812-95b43502-16f2-48d8-bab3-44481116509a.mov
+
+You need to fill out the password yourself. 
+The reason for doing this is to make sure that the users are sure of the password that they choose.
+
+## Conclusion
+
+Broken Authentication attack is a pandemic when it comes to web applications security. 
+Some of the causes of this attack can be traced down to some bad practices of users when it comes to password creations. Some users make use of weak credentials to create passwords for themselves. So one of the ways to prevent this attack is to restrict the use of weak password credentials.
+
+In this tutorial, you just build a form that checks for the complexity of a user's password and rejects it if it is not complex enough, you also build a progress bar that  changes its width, color and label based on how complex a user’s password becomes. Then you create a confirmation password field that confirms the user’s password before the account is created.
+You also learned how to use regular expressions in React.js.

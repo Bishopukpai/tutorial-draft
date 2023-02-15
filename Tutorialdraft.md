@@ -691,4 +691,5 @@ Then finally on line 45, you used the `num` value to set the width of the progre
 
 Now if you save the `LoginForm.js` and `ProgressBar.js` files and open the browser. You should still see your sign up form, but this time the color of your progress bar will be white:
 
-![Screenshot 2023-02-07 at 15 55 18](https://user-images.githubusercontent.com/77885988/218891659-476a7768-ad5e-459f-96ff-4e4450805d30.jpeg)
+![Screenshot 2023-02-07 at 18 34 25](https://user-images.githubusercontent.com/77885988/218891961-47d2a386-1a3e-4fe6-b42f-45787caf2638.jpeg)
+

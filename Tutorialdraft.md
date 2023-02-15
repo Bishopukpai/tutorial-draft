@@ -531,3 +531,164 @@ Save the LoginForm.js and ProgressBar.js files and open the browser, you should 
 
 ![Screenshot 2023-02-07 at 18 10 35](https://user-images.githubusercontent.com/77885988/218888354-b5044f46-02c0-4f78-acba-7e94a872131e.jpeg)
 
+Now, you can make the width and the color of the progress dynamic, in a way that they change based on the user’s password complexity. So modify your `ProgressBar` component to have the code below
+
+````javascript
+
+/**ProgressBar.js*/
+
+import React from 'react'
+
+const ProgressBar = () => {
+
+```
+ const setProgressBar = () =>({
+        width: '75%',
+        background: 'red',
+        height:'7px'
+  })
+```
+
+ return (
+    <>
+      <div className='progress' 
+      ```style={{height: '7px'}}```>
+        <div className='progress-bar' 
+          ```style={setProgressBar()}```>
+          </div>
+      </div>
+    </>
+  )
+}
+export default ProgressBar
+````
+
+With the code above, you created a function called `setProgressBar` and passed the width, height and background properties to it. Now the `function`, when called will give the progress bar all these properties.
+So, on line 15 you called this function and used it to apply styles to the progress bar.
+
+Now to make the width and the color of the progress bar dynamic, in a way that it will change based on the user’s password complexity, you have to define a few regular expressions and then use these regular expressions to to create a function that will change the progress bar color.
+
+But before that, you also need to create a `password` state, in the `LoginForm` component and pass it down as props to the `ProgressBar` component, since the password input field is in the `LoginForm` component. 
+Add the code below to the `LoginForm.js` file:
+
+````javascript
+
+/**Components/LoginForm.js*/
+
+..........
+const LoginForm = () => {
+/** Show or hide Password state */
+const [showPassword, setShowPassword] = useState(false)
+
+```
+/** Password state */
+const [password, setPassword ]= useState('')
+```
+
+..............
+<div className='mx-5 '>
+  {/** Password creation field */}
+  <div className='relative'>
+    <input 
+      type={(showPassword === false)? 'password': 'text'}
+      placeholder='enter a strong password...'
+      className='w-full rounded-lg h-10'
+      
+      ```
+      onChange={e => setPassword(e.target.value)}
+      ```
+      
+    />
+    
+    ```
+    <ProgressBar  password={password}/>
+    ```
+    
+    <p className='text-white'>Error</p>
+...............
+````
+
+With the code above, you created a `password` state and a `setPassword` function with `useState` hook, then in line 18 you used an `onChange` event to set the value of the `password` state to the user’s input. Then you finally passed the `password` state as `prop` to the `ProgressBar` component. 
+
+With this you can destructure the `password` props in the `ProgressBar` component and use it for your regular expression pattern. 
+So modify your `ProgressBar.js` file to have the following code:
+
+````javascript
+
+/**Components/ProgressBar.js*/
+
+import React from 'react'
+
+
+```
+const ProgressBar = ({password}) => {
+    
+   const pattern1 =/(?=.*[a-z])/
+    const pattern2 = /(?=.*[a-z])(?=.*[A-Z])/
+    const pattern3 =  /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/
+    const pattern4 = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@!_%&*])/
+
+    const result1 = pattern1.test(password)
+    const result2 = pattern2.test(password)
+    const result3 = pattern3.test(password)
+    const result4 = pattern4.test(password)
+    let num;
+  
+    if(result1 === true){
+        num = 25
+    }if(result2 === true){
+        num = 50
+    }if(result3 === true){
+        num = 75
+    }if(result4 === true){
+        num = 100
+    }
+
+ const ProgressBarColor = ()=>{
+        switch(num){
+            case 0:
+                return "#FFFFFF"
+            case 25:
+                return "#FF0000"
+            case 50:
+                return '#ffa500'
+            case 75: 
+                return '#90EE90'
+            case 100: 
+                return "#00FF00"
+            default:
+              return 'none'
+        }
+    }
+ ```
+ 
+    const setProgressBar = () =>({
+    
+    ```
+        width: `${num}%`,
+        background: ProgressBarColor(),
+     ```
+        height:'7px'
+    })
+...............
+````
+
+Basically what you did was to destructure the `password` prop, then create 4 regular expression patterns. 
+The first pattern will check if the password has a lowercase letter, the second pattern checks if the password has an uppercase letter and a lower case letter combined, the third pattern checks if the password has a lowercase letter, an uppercase letter and a number, then finally the fourth pattern will check if the password has a lowercase letter, an uppercase letter, a number and any special symbol.
+
+Then you used the `test(  )`  method to test the `password` prop with these patterns. So in line 12 you tested the password if it has a lowercase letter, in line 13 you tested the password if it has a lowercase letter and an uppercase letter, in line 14 you tested if the password has a lowercase letter and an uppercase letter and a number then in line 15 you tested the password if it has a lowercase letter, an uppercase letter, a number, and a special symbol.
+
+Now in line 16 you have declared a variable called `num`. The value of the `num` variable will be determined by the ability of the password to pass each test.
+
+So from line 18 to line 26 you used the `if` conditional statement to see if the `password` passed a test and then assign a value to the num variable.
+
+So the `if` block from line 18 -20 will assign a value of 25 to the `num` variable if the `password` has a lower case letter, the `if` block from line 20 to line 22 will assign a value of 50 to the `num` variable if the `password` has a lowercase letter and an uppercase letter, the `if` block from line 22 to line 24 will assign a value of 75 to the `num` variable if the `password` has a lowercase letter, an uppercase letter and a number, then the `if` block on line 24 to line 26 will assign the `num` variable a value of 100 if the `password` has a lowercase letter, an uppercase letter, a number and a special character.
+
+Now with the value of this `num` variable, you created a function that will change the color of the progress bar. 
+Inside this function you use a `switch` conditional statement to set the color of the progress bar based on the num value. So if the `num` variable is 25, the progress bar should have a color of red, if it’s 50,  the progress bar should have an orange color, if it’s 75 the progress bar should have a light green color then if it is 100 the progress bar should have a green color.
+
+Then finally on line 45, you used the `num` value to set the width of the progress bar,  and on line 46 you passed the `ProgressBarColor` function as a value for the background color. This will give the progress bar a color based on the switch statement from the function.
+
+Now if you save the `LoginForm.js` and `ProgressBar.js` files and open the browser. You should still see your sign up form, but this time the color of your progress bar will be white:
+
+![Screenshot 2023-02-07 at 15 55 18](https://user-images.githubusercontent.com/77885988/218891659-476a7768-ad5e-459f-96ff-4e4450805d30.jpeg)

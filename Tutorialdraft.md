@@ -743,3 +743,154 @@ One more thing you need to add is a label for the progress. The label will tell 
   )
 }
 ````
+
+So from line 4 to line 17 you created a `passwordStrengthLabel` function, and then you passed it into a `<p>` tag. 
+Now if you check your form again, you will notice that as the password gets more complex, the label changes along with the width and color of the progress bar. 
+
+
+https://user-images.githubusercontent.com/77885988/218893366-bddd67bb-7a4c-4f8c-ac46-8d65d4e4c1c3.mov
+
+With this, you have the progress bar done.
+However, you will notice that users can still submit the form even if they provide a weak password, well we are going to fix that with the next step.
+
+## Step 4- Set Password Requirements for Account Creation.
+
+In this section, you will make use of `react-hook-form` to determine what makes up a strong or complex password mixture. Here you will create a feature that will reject any password that does not contain letters, numbers, or special characters.
+
+So in the `LoginForm.js` file, add the code below to make the password input field a required field:
+
+````javascript
+
+/**Components/LoginForm.js*/
+
+........
+```
+import { useForm } from "react-hook-form";
+```
+
+const LoginForm = () => {
+
+```
+/** Form Submit events */
+const { register, handleSubmit, watch, formState: { errors } } = useForm();
+/** onSubmit events */
+const onSubmit = data => alert("Welcome");
+```
+
+........
+
+return (
+<React.Fragment>
+  <section>
+  
+  ```
+     <form onSubmit={handleSubmit(onSubmit)}>
+  ```   
+     
+      <div 
+         className='bg-black w-auto h-96 mt-20 rounded-lg mx-5'
+        >
+                    
+          {/** Header */}
+          <div 
+            className='flex items-center justify-center h-32'
+           >
+                        
+             <p 
+               className='text-white uppercase text-4xl font-bold text-center'>
+                Sign-Up To Create an Account
+              </p>
+          </div>
+            {/** Body */}
+            <div>
+              <div className='mx-5 '>
+              {/** Password creation field */}
+                <div className='relative'>
+                  <input 
+                  type={(showPassword === false)? 
+                  'password' : 'text'}
+                   placeholder='enter a strong password...'
+                   className='w-full rounded-lg h-10'
+                   
+                  ``` 
+                  {...register("password", { required: 'You need a strong password' })}
+                  ```
+                   onChange={e => setPassword(e.target.value)}
+                  />
+                  <ProgressBar  password={password}/>
+                  
+                  ```
+                  <p 
+                    className='text-red-600'
+                  >
+                   {errors.password && 
+                   <span>{errors.password.message}</span>}
+                  </p>
+                  ```
+..........
+````
+
+Now your form recognizes the input field as a required field, so if you try to submit the form without entering any value in the input field, you will get an error message,  that says “You need a strong password”.
+
+
+The next step is to add your password creation rules. Please note, the `password` field accepts all credentials, but with `react-hook-form`  you can set some rules that will determine what user’s password should have before they are accepted.
+So add the code below to the password input field:
+
+````javascript
+
+/**LoginForm.js*/
+
+.........
+<div>
+  <div className='mx-5 '>
+    {/** Password creation field */}
+    <div className='relative'>
+    <input 
+      type={(showPassword === false)? 'password' : 'text'}
+      placeholder='enter a strong passwod...'
+      className='w-full rounded-lg h-10'
+      {...register("password", { required: 'You need a strong password',
+      
+      ```
+      pattern:{
+        value: /^(\S)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&*()--+={}])/,
+        message: 'A strong password should contain atleast one lowercase letter, one uppercase letter one numeber and a special'
+              },
+      minLength:{
+        value: 8,
+        message: 'You need to have a password with atleast 8 characters'
+               },
+        ```
+                                    
+          })}
+        onChange={e => setPassword(e.target.value)}
+      />
+      <ProgressBar  password={password}/>
+      <p 
+       className='text-red-500'>
+       {errors.password && 
+       <span>{errors.password.message}
+      </span>
+       }
+      </p>
+                                
+      {/** Password view or hide */}
+      <div className='text-2xl absolute top-2 right-5'>
+        {
+      (showPassword === false)? 
+      <AiFillEyeInvisible onClick={handleShowPassword}/>: 
+      <AiFillEye onClick={handleShowPassword}/>
+         }
+      </div>
+  </div>
+........
+````
+
+The code from line 13 to line 20 sets the pattern of what a complex password should contain, with the help of regular expression. 
+Then you set an error message that will notify the user when they provide a weak password that does not match the pattern.
+The code from line 17 to line 20 sets the minimum length required for a complex password. This way users will help to make their password more complex by adding more characters to it.
+
+Now save the file and open the browser. When you try to submit the form without entering any value, you should get a “You need a strong password” error message, then if you provide a password that is not up to 8 characters long, you should get  “You need a password with at least 8 characters” error message.
+If you go ahead and provide an 8 character password and your password contains just lowercase letters or misses one of the requirements. Then you should get the “A strong password should contain at least one lowercase letter, one uppercase letter, a number, and any special character” error message.
+
+https://user-images.githubusercontent.com/77885988/218894626-7e6a730b-d7f3-42f0-a7e3-b579c366ad46.mov

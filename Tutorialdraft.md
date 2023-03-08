@@ -100,12 +100,9 @@ The next step you can take is to add the paths of all your template files in the
 
 /** tailwind.config.js*/
 module.exports = {
-```
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
-  
-```
   theme: {
     extend: {},
   },
@@ -178,20 +175,11 @@ To make sure everything that was installed correctly, you can open the package.j
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-   
-   ```
    "bootstrap": "^5.2.3",
-   ```
-   
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-   
-   
-   ```
     "react-hook-form": "^7.43.0",
     "react-icons": "^4.7.1",
-    ```
-    
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
@@ -237,14 +225,12 @@ You now have to import the `LoginForm` component inside your `App.js` file.  Use
 ````javascript
 
 /**App.js*/
-```
+
 import LoginForm from "./Components/LoginForm";
-```
+
 function App() {
   return (
-  ```
      <LoginForm/>
-   ```
     
   );
 }
@@ -310,9 +296,7 @@ The first icon will appear if the user wants to hide their password while the se
 
 ````javaScript
 
-```
 import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
-```
 
 const LoginForm = () => {
   return (
@@ -321,13 +305,13 @@ const LoginForm = () => {
      <p className='text-white'>Error</p>
      
      
-     ```
+    
           {/** Password view or hide */}
     <div className='text-2xl absolute top-2 right-5'>
        <AiFillEyeInvisible/>
        <AiFillEye/>
     </div>
-    ```
+    
     ........
    </form>
  </React.Fragment>
@@ -346,46 +330,35 @@ Add the following code to your `LoginForm` component to add this feature to your
 
 /**LoginForm.js*/
 
-```
 import React, {useState} from 'react'
-```
 
 import {AiFillEyeInvisible, AiFillEye} from 'react-icons/ai'
 
 
 const LoginForm = () => {
 
-```
+
 {/** Show or hide Password state */}
 const [showPassword, setShowPassword] = useState(false)
 {/** Show Password onClick events */}
 const handleShowPassword = () => {
     setShowPassword(!showPassword)
 }
-```
 .......
    <div className='relative'>
      <input 
-     
-     ```
        type={(showPassword === false)? 'password' : 'text'}
-      ```
-      
         placeholder='enter a strong passwod...'
         className='w-full rounded-lg h-10'
        />
       <p className='text-white'>Error</p>
         {/** Password view or hide */}
       <div className='text-2xl absolute top-2 right-5'>
-      
-      ```
         {
           (showPassword == false)? 
            <AiFillEyeInvisible onClick={handleShowPassword}/>:  
            <AiFillEye onClick={handleShowPassword}/>
          }
-      ```
-      
       </div>
     </div>
     ..........
@@ -422,8 +395,6 @@ You can add the following code to your `LoginForm` component in the `LoginForm.j
      </div>
     </div>
     
-    
-```
     {/** Confirm Password creation field */}
     <div className='relative'>
       <input 
@@ -441,7 +412,6 @@ You can add the following code to your `LoginForm` component in the `LoginForm.j
       className='h-10 w-2/5 text-white rounded-lg font-bold bg-red-900'
     />
   </div>
-```
 ..........
 ````
 
@@ -505,9 +475,7 @@ Now import the ProgressBar component inside the LoginForm.js file and then rende
 
 .......
 
-```
 import ProgressBar from './ProgressBar'
-```
 
 const LoginForm = () => {
 .......
@@ -518,11 +486,7 @@ const LoginForm = () => {
      placeholder='enter a strong passwod...'
      className='w-full rounded-lg h-10'
     />
-    
-    ```
     <ProgressBar />
-    ```
-    
     <p className='text-white'>Error</p>
 ...........
 ````
@@ -541,20 +505,18 @@ import React from 'react'
 
 const ProgressBar = () => {
 
-```
  const setProgressBar = () =>({
         width: '75%',
         background: 'red',
         height:'7px'
   })
-```
-
+  
  return (
     <>
       <div className='progress' 
-      ```style={{height: '7px'}}```>
+        style={{height: '7px'}}>
         <div className='progress-bar' 
-          ```style={setProgressBar()}```>
+         style={setProgressBar()}>
           </div>
       </div>
     </>
@@ -580,10 +542,8 @@ const LoginForm = () => {
 /** Show or hide Password state */
 const [showPassword, setShowPassword] = useState(false)
 
-```
 /** Password state */
 const [password, setPassword ]= useState('')
-```
 
 ..............
 <div className='mx-5 '>
@@ -593,17 +553,10 @@ const [password, setPassword ]= useState('')
       type={(showPassword === false)? 'password': 'text'}
       placeholder='enter a strong password...'
       className='w-full rounded-lg h-10'
-      
-      ```
       onChange={e => setPassword(e.target.value)}
-      ```
-      
     />
     
-    ```
     <ProgressBar  password={password}/>
-    ```
-    
     <p className='text-white'>Error</p>
 ...............
 ````
@@ -619,8 +572,6 @@ So modify your `ProgressBar.js` file to have the following code:
 
 import React from 'react'
 
-
-```
 const ProgressBar = ({password}) => {
     
    const pattern1 =/(?=.*[a-z])/
@@ -660,14 +611,11 @@ const ProgressBar = ({password}) => {
               return 'none'
         }
     }
- ```
  
     const setProgressBar = () =>({
-    
-    ```
+   
         width: `${num}%`,
         background: ProgressBarColor(),
-     ```
         height:'7px'
     })
 ...............
@@ -707,7 +655,6 @@ One more thing you need to add is a label for the progress. The label will tell 
 
 .......
 
-```
  const passwordStrengthLabel = () =>{
         switch(num){
             case 0:
@@ -722,8 +669,6 @@ One more thing you need to add is a label for the progress. The label will tell 
                 return "Very complex"
         }
     }
-  ```
-  
   
   return (
     <>
@@ -731,14 +676,10 @@ One more thing you need to add is a label for the progress. The label will tell 
        <div className='progress-bar' 
             style={setProgressBar()}></div>
        </div>
-       
-  ```
-    <p 
+     <p 
       style={{color:  ProgressBarColor() }}>
       {passwordStrengthLabel()}
-    </p>
-   ```
-   
+     </p>
     </>
   )
 }
@@ -764,28 +705,21 @@ So in the `LoginForm.js` file, add the code below to make the password input fie
 /**Components/LoginForm.js*/
 
 ........
-```
 import { useForm } from "react-hook-form";
-```
 
 const LoginForm = () => {
 
-```
 /** Form Submit events */
 const { register, handleSubmit, watch, formState: { errors } } = useForm();
 /** onSubmit events */
 const onSubmit = data => alert("Welcome");
-```
 
 ........
 
 return (
 <React.Fragment>
   <section>
-  
-  ```
      <form onSubmit={handleSubmit(onSubmit)}>
-  ```   
      
       <div 
          className='bg-black w-auto h-96 mt-20 rounded-lg mx-5'
@@ -811,22 +745,16 @@ return (
                   'password' : 'text'}
                    placeholder='enter a strong password...'
                    className='w-full rounded-lg h-10'
-                   
-                  ``` 
                   {...register("password", { required: 'You need a strong password' })}
-                  ```
                    onChange={e => setPassword(e.target.value)}
                   />
                   <ProgressBar  password={password}/>
-                  
-                  ```
                   <p 
                     className='text-red-600'
                   >
                    {errors.password && 
                    <span>{errors.password.message}</span>}
                   </p>
-                  ```
 ..........
 ````
 
@@ -851,7 +779,6 @@ So add the code below to the password input field:
       className='w-full rounded-lg h-10'
       {...register("password", { required: 'You need a strong password',
       
-      ```
       pattern:{
         value: /^(\S)(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$%^&*()--+={}])/,
         message: 'A strong password should contain atleast one lowercase letter, one uppercase letter one numeber and a special'
@@ -860,7 +787,6 @@ So add the code below to the password input field:
         value: 8,
         message: 'You need to have a password with atleast 8 characters'
                },
-        ```
                                     
           })}
         onChange={e => setPassword(e.target.value)}
@@ -915,17 +841,12 @@ Add the following code to the `confirm password` field inside the `LoginForm` co
     type='password'
     placeholder='confirm your password'
     className='w-full rounded-lg h-10'
-    
-    ```
     {...register("ConfirmPassword", { required: 'Your input does not match',
    
     validate: (value) => 
     value === password || "Your inputs does not match",
     })}
-    ```
   />
-  
-  ```
   <p className='text-red-500'>
     {
      errors.ConfirmPassword && 
@@ -934,7 +855,6 @@ Add the following code to the `confirm password` field inside the `LoginForm` co
       </span>
      }
   </p>
-  ```
 </div>
 ````
 
@@ -954,14 +874,10 @@ Add the code below to the input tag in the `confirm password` field:
    <input 
     type='password'
      placeholder='confirm your password'
-     
-     ```
      onPaste={(e)=>{
      e.preventDefault()
      return false
      }}
-     ```
-     
      className='w-full rounded-lg h-10'
 
      {...register("ConfirmPassword", { required: 'Your input does not match',
